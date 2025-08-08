@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Come Back Day</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        
+        .title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 rgba(255, 107, 107, 0.3);
+            animation: titleBeat 2s infinite;
+        }
+        
+        @keyframes titleBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #5c7cfa;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .heart-container {
+            position: relative;
+            height: 200px;
+            margin: 40px 0;
+        }
+        
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            color: #ff6b6b;
+            animation: heartbeat 1.2s infinite;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            14% { transform: translate(-50%, -50%) scale(1.3); }
+            28% { transform: translate(-50%, -50%) scale(1); }
+            42% { transform: translate(-50%, -50%) scale(1.3); }
+            70% { transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        .message {
+            background: linear-gradient(to right, #ff9a9e, #fbc2eb);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message h3 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .message p {
+            font-size: 1.2rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .ngel-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #5c7cfa;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 0 5px 15px rgba(92, 124, 250, 0.4);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart-shape {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b6b;
+            opacity: 0;
+            animation: floatUp 8s linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .animation-container {
+            height: 200px;
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .ngel-character {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #5c7cfa, #74c0fc);
+            border-radius: 50%;
+            animation: bounce 3s ease-in-out infinite;
+            box-shadow: 0 10px 20px rgba(92, 124, 250, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-30px); }
+        }
+        
+        .character-shadow {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            animation: shadow 3s ease-in-out infinite;
+            filter: blur(5px);
+        }
+        
+        @keyframes shadow {
+            0%, 100% { width: 80px; opacity: 0.5; }
+            50% { width: 60px; opacity: 0.3; }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #495057;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 3rem; }
+            .subtitle { font-size: 1.5rem; }
+            .message h3 { font-size: 1.7rem; }
+            .message p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <h1 class="title">National Come Back Day</h1>
+        <h2 class="subtitle">For My Special <span class="ngel-name">Ngel</span></h2>
+        
+        <div class="animation-container">
+            <div class="ngel-character">N</div>
+            <div class="character-shadow"></div>
+        </div>
+        
+        <div class="heart-container">
+            <div class="heart">❤️</div>
+        </div>
+        
+        <div class="message">
+            <h3>Dear <span class="ngel-name">Ngel</span>,</h3>
+            <p>On this special day dedicated to second chances, I wanted to reach out and say that you still hold a special place in my heart. The memories we created together are treasures I'll always cherish.</p>
+            <p>Life has taught me that sometimes, the best things are worth waiting for and fighting for. I believe in us and the beautiful connection we shared.</p>
+            <p>I'm sending you all my love and hope that maybe, just maybe, we could give us another chance.</p>
+        </div>
+        
+        <button class="btn" onclick="sendLove()">Send Love to Ngel</button>
+        
+        <div class="footer">
+            Made with ❤️ on National Come Back Day
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-shape');
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.fontSize = `${15 + Math.random() * 20}px`;
+                heart.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Send love animation
+        function sendLove() {
+            const btn = document.querySelector('.btn');
+            btn.innerHTML = '<i class="fas fa-heart"></i> Love Sent!';
+            btn.style.background = 'linear-gradient(45deg, #4cd137, #44bd32)';
+            
+            // Create explosion of hearts
+            const container = document.querySelector('.container');
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-shape');
+                heart.innerHTML = '❤';
+                heart.style.position = 'absolute';
+                heart.style.left = '50%';
+                heart.style.top = '90%';
+                heart.style.fontSize = `${15 + Math.random() * 25}px`;
+                heart.style.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                heart.style.animation = `floatUp ${1 + Math.random() * 2}s linear forwards`;
+                container.appendChild(heart);
+                
+                // Remove hearts after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            }
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                btn.innerHTML = 'Send More Love';
+                btn.style.background = 'linear-gradient(45deg, #ff6b6b, #ff8e8e)';
+            }, 3000);
+        }
+        
+        // Initialize
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
